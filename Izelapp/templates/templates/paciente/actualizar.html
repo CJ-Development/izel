@@ -1,0 +1,13 @@
+<!-- usuario/actualizar.html -->
+{% extends 'base.html' %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/usuario/actualizar.css' %}">
+
+  <h2>Actualizar Usuario</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit">Actualizar</button>
+  </form>
+  <br>
+{% endblock %}

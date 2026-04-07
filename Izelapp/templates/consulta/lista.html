@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    Atenciones medicas
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/consulta/lista.css' %}">
+
+    <div class="atenciones__tabla">
+        <h2 class="atenciones__titulo">Ultimas consultas de <td>{{ paciente.first_name }} {{ paciente.last_name }}</td> </h2>
+        <table class="tabla__atenciones">
+            <thead>
+                <tr>
+                    <th class="tabla__atenciones--cabecera">Fecha</th>
+                    <th class="tabla__atenciones--cabecera">Especialidad</th>
+                    <th class="tabla__atenciones--cabecera">Medico</th>
+                    <th class="tabla__atenciones--cabecera">Motivo</th>
+                    <th class="tabla__atenciones--cabecera">Diagnostico principal</th>
+                    <th class="tabla__atenciones--cabecera">Diagnostico relacionado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consulta in consultas %}
+                <tr>
+                    <td class="tabla__atenciones--celda-1">{{ consulta.fecha_consulta }}</td>
+                    <td class="tabla__atenciones--celda-2">{{ consulta.especialidad }}</td>
+                    <td class="tabla__atenciones--celda-3">{{ consulta.medico }}</td>
+                    <td class="tabla__atenciones--celda-4">{{ consulta.motivo_consulta}}</td>
+                    <td class="diagnostico">{{ consulta.diagnostico_principal|capfirst }}</td>
+                    <td class="diagnostico">{{ consulta.diagnostico_relacionado|capfirst }}</td>
+                    
+                {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="contenedor-boton">
+        <button class="contenedor__boton--boton" onclick="history.back()">Volver</button>
+    </div>
+    
+{% endblock %}
+

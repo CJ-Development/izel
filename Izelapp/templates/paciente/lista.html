@@ -1,0 +1,31 @@
+
+<!-- paciente/tabla.html -->
+<h2>Lista de Pacientes</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Documento</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for paciente in pacientes %}
+      <tr>
+        <td>{{ paciente.first_name }} {{ paciente.last_name }}</td>
+        <td>{{ paciente.tipo_doc }} {{ paciente.num_doc }}</td>
+        <td>{{ paciente.email }}</td>
+        <td>{{ paciente.telefono }}</td>
+        <td>
+          <a href="{% url 'actualizar_paciente' paciente.id %}">Editar</a>
+          <a href="{% url 'eliminar_paciente' paciente.id %}">Eliminar</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5">No hay pacientes</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p><strong>Total:</strong> {{ conteo }}</p>

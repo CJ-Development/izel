@@ -1,0 +1,45 @@
+{% extends 'componentes/Base.html' %}
+{% load static %}
+
+{% block title %}Agenda del Médico{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/medico/agenda.css' %}">
+
+<div class="container">
+  <h2>Citas Agendadas</h2>
+
+  {% if citas %}
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Especialidad</th>
+            <th>Comenzar Cita</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cita in citas %}
+            <tr>
+              <td>{{ cita.paciente }}</td>
+              <td>{{ cita.fecha_cita }}</td>
+              <td>{{ cita.hora_cita }}</td>
+              <td>{{ cita.especialidad }}</td>
+              <td>
+                <a href="{% url 'consulta_medica' cita.paciente.id cita.id %}">Comenzar</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-info">
+      No hay citas agendadas.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

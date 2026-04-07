@@ -1,0 +1,41 @@
+<!-- listar_citas.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    Citas Médicas Agendadas
+{% endblock %}
+
+{% block content %}
+    <h2>Citas Médicas Agendadas</h2>
+
+    {% if citas %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Especialidad</th>
+                    <th>Médico</th>
+                    <th>Paciente</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                    <tr>
+                        <td>{{ cita.fecha_cita }}</td>
+                        <td>{{ cita.hora_cita }}</td>
+                        <td>{{ cita.especialidad }}</td>
+                        <td>{{ cita.medico }}</td>
+                        <td>{{ cita.paciente }}</td>
+                        <td>{{ cita.estado_cita }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay citas agendadas en este momento.</p>
+    {% endif %}
+    
+    <a href="{% url 'registrar_cita' %}">Agendar Nueva Cita</a>
+{% endblock %}

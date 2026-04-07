@@ -1,0 +1,77 @@
+{% extends 'componentes/Base.html' %}
+{% load static %}
+
+{% block title %}
+  Registro de Paciente
+{% endblock %}
+
+{% block content %}
+
+<!-- Estilos personalizados -->
+<link rel="stylesheet" href="{% static 'css/paciente/insertar.css' %}">
+
+<!-- Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<!-- intlTelInput -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css" />
+
+<!-- Flatpickr -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
+<!-- Encabezado del formulario -->
+
+<!-- Mostrar mensajes Django -->
+{% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <p class="message">{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- Errores generales -->
+{% if formulario.non_field_errors %}
+  <div class="error-messages">
+    {% for error in formulario.non_field_errors %}
+      <p class="error">{{ error }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<!-- Formulario -->
+<form method="POST">
+  {% csrf_token %}
+<h2 class="form-title">Registro de Paciente</h2>
+  
+  {% for field in formulario %}
+    <div class="form-row">
+      <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+      {{ field }}
+      
+      {% if field.errors %}
+        <div class="error-messages">
+          {% for error in field.errors %}
+            <p class="error">{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if field.help_text %}
+        <span class="help-text">{{ field.help_text }}</span>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <button type="submit">Registrar</button>
+</form>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+<script src="{% static 'js/activar.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'componentes/Base.html' %}
+{% load static %}
+
+{% block title %}Calendario de Citas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cita/calendario.css' %}">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="contenedor-calendario">
+  <h2 class="titulo-calendario">Calendario de Citas Médicas</h2>
+  <div id="calendar"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      locale: 'es',
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      events: "{% url 'obtener_disponibilidad' %}",
+      eventClick: function (info) {
+        const disponibilidadId = info.event.id;
+        if (disponibilidadId) {
+          window.location.href = `/confirmar_cita/${disponibilidadId}/`;
+        } else {
+          alert("Este evento no tiene ID.");
+        }
+      }
+    });
+
+    calendar.render();
+  });
+</script>
+{% endblock %}

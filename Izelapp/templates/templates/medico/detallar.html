@@ -1,0 +1,110 @@
+{% extends 'componentes/Base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/usuario/detallar.css' %}">
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+<h2>Tu perfil</h2>
+
+<div class="imagen-perfil-contenedor">
+    <label for="id_imagen" class="imagen-wrapper">
+        {% if usuario.imagen %}
+            <img id="preview" src="{{ usuario.imagen.url }}" alt="Imagen de {{ usuario.first_name }}">
+        {% else %}
+            <img id="preview" src="{% static 'img/user_default.png' %}" alt="Imagen de usuario">
+        {% endif %}
+    </label>
+
+    <div class="acciones-imagen">
+        <div class="texto-cambiar">Haz clic para cambiar</div>
+        {% if usuario.imagen %}
+        <form method="post" action="{% url 'eliminar_imagen_usuario' %}" class="form-eliminar">
+            {% csrf_token %}
+            <button type="button" id="eliminar-btn" title="Eliminar imagen">Eliminar</button>
+        </form>
+        {% endif %}
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="form-imagen">
+        {% csrf_token %}
+        {{ formulario.imagen }}
+        <button type="submit" id="guardar-btn" style="display: none;">Guardar imagen</button>
+    </form>
+
+    <!-- Modal -->
+    <div id="modal-confirmacion" class="modal">
+        <div class="modal-contenido">
+            <h3>¿Eliminar imagen de perfil?</h3>
+            <p>Esta acción no se puede deshacer.</p>
+            <div class="modal-botones">
+                <button id="cancelar-btn">Cancelar</button>
+                <button id="confirmar-btn">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table>
+    <tr><th>Nombre de usuario:</th><td>{{ usuario.username }}</td></tr>
+    <tr><th>Nombre:</th><td>{{ usuario.first_name }}</td></tr>
+    <tr><th>Apellido:</th><td>{{ usuario.last_name }}</td></tr>
+    <tr><th>Tipo de Documento:</th><td>{{ usuario.tipo_doc }}</td></tr>
+    <tr><th>Número de Documento:</th><td>{{ usuario.num_doc }}</td></tr>
+    <tr><th>Correo:</th><td>{{ usuario.email }}</td></tr>
+    <tr><th>Género:</th><td>{{ usuario.genero }}</td></tr>
+    <tr><th>RH:</th><td>{{ usuario.rh }}</td></tr>
+    <tr><th>Teléfono:</th><td>{{ usuario.telefono }}</td></tr>
+    <tr><th>Fecha de Nacimiento:</th><td>{{ usuario.fecha_nacimiento }}</td></tr>
+    <tr><th>Tipo de Población:</th><td>{{ usuario.tipo_poblacion }}</td></tr>
+    <tr><th>Ocupación:</th><td>{{ usuario.ocupacion }}</td></tr>
+    <tr><th>EPS:</th><td>{{ usuario.eps }}</td></tr>
+    <tr><th>Especialidad:</th><td>{{ usuario.medico.especialidad }}</td></tr>
+    <tr><th>Fecha de contratación:</th><td>{{ usuario.medico.fecha_contratacion }}</td></tr>
+</table>
+
+<form action="{% url 'actualizar_medico' id=usuario.id %}" method="get" style="text-align: center; margin-top: 20px;">
+    <button id='actualizar-btn' type="submit">Actualizar mis datos</button>
+</form>
+
+<script>
+    const inputImagen = document.getElementById('id_imagen');
+    const preview = document.getElementById('preview');
+    const guardarBtn = document.getElementById('guardar-btn');
+
+    inputImagen.addEventListener('change', function (event) {
+        if (event.target.files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                preview.src = reader.result;
+                guardarBtn.style.display = 'inline-block';
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    });
+
+    const eliminarBtn = document.getElementById('eliminar-btn');
+    const modal = document.getElementById('modal-confirmacion');
+    const cancelarBtn = document.getElementById('cancelar-btn');
+    const confirmarBtn = document.getElementById('confirmar-btn');
+    const formEliminar = document.querySelector('.form-eliminar');
+
+    if (eliminarBtn) {
+        eliminarBtn.addEventListener('click', () => modal.style.display = 'flex');
+    }
+    if (cancelarBtn) {
+        cancelarBtn.addEventListener('click', () => modal.style.display = 'none');
+    }
+    if (confirmarBtn) {
+        confirmarBtn.addEventListener('click', () => formEliminar.submit());
+    }
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+</script>
+{% endblock %}

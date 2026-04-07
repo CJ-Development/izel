@@ -1,0 +1,16 @@
+{% extends 'componentes/Base.html' %}
+{% load static %}
+
+{% block title %}Cita No Disponible{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/cita/no_disponible.css' %}">
+
+<div class="contenedor-cita-no-disponible">
+    <div class="mensaje-cita-no-disponible">
+        <h2>⛔ Cita no disponible</h2>
+        <p>Tienes una Cita el mismo dia y hora.</p>
+        <a href="{% url 'calendario' %}" class="btn-volver">Volver al calendario</a>
+    </div>
+</div>
+{% endblock %}
