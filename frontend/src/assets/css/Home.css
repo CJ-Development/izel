@@ -1,0 +1,366 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─── Hero ─────────────────────────────────────────────────────────── */
+.hero {
+  background: #006989;
+  padding: 80px 48px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.heroText {
+  max-width: 540px;
+  font-family: "Roboto Slab", serif;
+}
+
+
+.heroBadge {
+  background: rgba(163, 186, 195, 0.15);
+  color: #A3BAC3;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 24px;
+  border: 0.5px solid rgba(163, 186, 195, 0.3);
+}
+
+.heroTitle {
+  font-size: 40px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.heroTitle span {
+  color: #A3BAC3;
+}
+
+.heroDesc {
+  font-size: 15px;
+  color: #A3BAC3;
+  line-height: 1.8;
+  margin-bottom: 36px;
+ font-family: "Fredoka", sans-serif;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 12px;
+}
+
+.btnPrimary {
+  background: #EAEBED;
+  color: #006989;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+}
+
+.btnOutline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.btnOutline:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.heroStats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: "Roboto Slab", serif;
+
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(163, 186, 195, 0.25);
+  border-radius: 12px;
+  padding: 20px 24px;
+  min-width: 220px;
+}
+
+.statNum {
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #A3BAC3;
+  margin-top: 2px;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.statBar {
+  height: 3px;
+  background: rgba(163, 186, 195, 0.2);
+  border-radius: 2px;
+  margin-top: 12px;
+}
+
+.statBarFill {
+  height: 3px;
+  border-radius: 2px;
+  background: #A3BAC3;
+}
+
+/* ─── Sobre nosotros ────────────────────────────────────────────────── */
+.nosotros {
+  background: #EAEBED;
+  padding: 72px 48px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.nosotrosImgWrap {
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nosotrosLogoBig {
+  width: 160px;
+  height: 160px;
+  background: #006989;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nosotrosContent {
+  flex: 1;
+}
+
+.sectionTag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #006989;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.sectionTitle {
+  font-size: 30px;
+  font-weight: 500;
+  color: #171738;
+  margin-bottom: 16px;
+  line-height: 1.3;
+  font-family: "Roboto Slab", serif;
+}
+
+.sectionDesc {
+  font-size: 15px;
+  color: #006989;
+  line-height: 1.8;
+  margin-bottom: 24px;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.valores {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.valor {
+  background: #fff;
+  border: 0.5px solid #A3BAC3;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #171738;
+  font-weight: 500;
+  
+}
+
+/* ─── Servicios ─────────────────────────────────────────────────────── */
+.servicios {
+  background: #171738;
+  padding: 72px 48px;
+}
+
+.serviciosSub {
+  font-size: 14px;
+  color: #A3BAC3;
+  margin-bottom: 40px;
+  font-family: "Fredoka", sans-serif;
+
+}
+
+.serviciosSectionTitle {
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  font-family: "Roboto Slab", serif;
+
+}
+
+.serviciosSectionTag {
+  font-size: 12px;
+  font-weight: 500;
+  color: #A3BAC3;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+ font-family: "Fredoka", sans-serif;
+
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.svcCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(163, 186, 195, 0.25);
+  border-radius: 12px;
+  padding: 28px;
+  transition: border-color 0.2s;
+}
+
+.svcCard:hover {
+  border-color: rgba(163, 186, 195, 0.6);
+}
+
+.svcIcon {
+  width: 44px;
+  height: 44px;
+  background: #006989;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.svcIcon svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 1.8;
+}
+
+.svcTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+  font-family: "Roboto Slab", serif;
+
+}
+
+.svcDesc {
+  font-size: 13px;
+  color: #A3BAC3;
+  line-height: 1.7;
+ font-family: "Fredoka", sans-serif;
+}
+
+/* ─── CTA ───────────────────────────────────────────────────────────── */
+.cta {
+  background: #006989;
+  padding: 64px 48px;
+  text-align: center;
+}
+
+.ctaTitle {
+  font-size: 32px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 12px;
+  font-family: "Roboto Slab", serif;
+
+}
+
+.ctaSub {
+  font-size: 15px;
+  color: #A3BAC3;
+  margin-bottom: 32px;
+  font-family: "Fredoka", sans-serif;
+
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 48px 20px;
+  }
+  .heroTitle {
+    font-size: 28px;
+  }
+  .heroStats {
+    width: 100%;
+  }
+  .statCard {
+    min-width: unset;
+  }
+  .nosotros {
+    flex-direction: column;
+    padding: 48px 20px;
+  }
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  .servicios {
+    padding: 48px 20px;
+  }
+  .cta {
+    padding: 48px 20px;
+  }
+  .ctaBtns {
+    flex-direction: column;
+    align-items: center;
+  }
+}

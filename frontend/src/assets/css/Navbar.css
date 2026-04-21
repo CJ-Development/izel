@@ -1,0 +1,143 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 48px;
+  background: #006989;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navLogoIcon {
+  width: 36px;
+  height: 36px;
+}
+
+.navLogoText {
+  font-size: 20px;
+  font-weight: 500;
+  color: #A3BAC3;
+  letter-spacing: 2px;
+  font-family: "Roboto Slab", serif;
+
+}
+
+.navLinks {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.navLinks a {
+  color: #060d0f;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+    font-family: "Fredoka", sans-serif;
+}
+
+.navLinks a:hover {
+  color: #fff;
+}
+
+.btnLogin {
+  background: #EAEBED;
+  color: #006989;
+  border: none;
+  padding: 8px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+    font-family: "Fredoka", sans-serif;
+}
+
+.btnLogin:hover {
+  color:black;
+}
+
+
+/* ── Botones-ancla── */
+.navAnchor {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;           
+  font-family: "Fredoka", sans-serif;
+  color: inherit;           
+  padding: 0;
+  text-decoration: none;
+}
+.navAnchor:hover {
+  color: #fff;
+ }
+
+/* ── Bloque de usuario autenticado ── */
+.navUser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navUserBadge {
+  background: rgba(163, 186, 195, 0.15);
+  color: #A3BAC3;
+  font-size: 11px;
+  font-family: "Fredoka", sans-serif;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 0.5px solid rgba(163, 186, 195, 0.35);
+  white-space: nowrap;
+}
+
+.navUserName {
+  font-size: 14px;
+  font-family: "Fredoka", sans-serif;
+  color: #EAEBED;
+  white-space: nowrap;
+}
+
+.btnDashboard {
+  background: #006989;
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btnDashboard:hover { opacity: 0.85; }
+
+.btnLogout {
+  background: transparent;
+  color: #A3BAC3;
+  border: 1px solid rgba(163, 186, 195, 0.35);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.btnLogout:hover { border-color: rgba(163, 186, 195, 0.8); }
+@media (max-width: 768px) {
+  .nav {
+    padding: 14px 20px;
+  }
+  .navLinks {
+    gap: 16px;
+  }
+  .navLinks a {
+    display: none;
+  }
+}
